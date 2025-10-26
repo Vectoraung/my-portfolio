@@ -1,6 +1,9 @@
 import streamlit as st
 import json
 import helpers as h
+import importlib.util
+import os
+
 
 project_data = st.session_state.get("project_data", None)
 
@@ -15,22 +18,45 @@ project_id = query_params.get("projectid", None)
 
 if project_id is not None:
     st.session_state.selected_project_id = project_id
+    module_path = f"projects/{project_id}.py"
 
-    with open(f"projects/{project_id}.py") as f:
-        code = f.read()
-        exec(code)
+    if os.path.exists(module_path):
+        spec = importlib.util.spec_from_file_location(project_id, module_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
 
-    st.stop()
+        # Call its run() function if it exists
+        if hasattr(module, "run"):
+            module.run()
+
+            st.stop()
+        else:
+            st.error(f"Module '{project_id}' has no run() function.")
+    else:
+        st.error(f"Project file '{module_path}' not found.")
 
 project_id = st.session_state.get("selected_project_id", None)
+
 if project_id is not None:
-    with open(f"projects/{project_id}.py") as f:
-        code = f.read()
-        exec(code)
+    st.session_state.selected_project_id = project_id
+    module_path = f"projects/{project_id}.py"
 
-    st.session_state.selected_project_id = None
+    if os.path.exists(module_path):
+        spec = importlib.util.spec_from_file_location(project_id, module_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
 
-    st.stop()
+        # Call its run() function if it exists
+        if hasattr(module, "run"):
+            module.run()
+
+            st.session_state.selected_project_id = None
+
+            st.stop()
+        else:
+            st.error(f"Module '{project_id}' has no run() function.")
+    else:
+        st.error(f"Project file '{module_path}' not found.")
 
 main_container = st.container(gap="large")
 
