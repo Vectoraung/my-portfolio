@@ -29,7 +29,7 @@ container.markdown(h.create_techstack_blocks(all_tech_stacks), unsafe_allow_html
 container = main_container.container()
 container.header("Education 🎓")
 container.write("**Rangsit University, Thailand**")
-container.write("Bachelor of Science in Information and Communication Technology ***(2020 - 2024)***")
+container.write("Bachelor of Science in Information and Communication Technology ***(2023 - Present)***")
 container.caption("Ongoing")
 container.markdown(":green[**GPA: 3.76/4.00**]", unsafe_allow_html=True)
 
