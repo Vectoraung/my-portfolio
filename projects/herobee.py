@@ -3,7 +3,8 @@ import helpers as h
 import requests
 
 def run():
-    h.back_to_projects()
+    if st.button("Back"):
+        st.switch_page("pages/projects.py")
 
     all_projects = st.session_state.get("project_data", None)
 

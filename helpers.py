@@ -15,7 +15,3 @@ def video_block(url):
         allow="autoplay"></iframe>
     </div>
     """
-
-def back_to_projects():
-    if st.button("Back"):
-        st.switch_page("pages/projects.py")
