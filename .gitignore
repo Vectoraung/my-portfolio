@@ -79,7 +79,6 @@ logs/
 # -----------------------------
 # Data / Uploads / Cache
 # -----------------------------
-data/
 uploads/
 tmp/
 cache/

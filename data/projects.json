@@ -1,0 +1,15 @@
+{
+
+    "order_taking_agent":{
+        "name": "Order Taking AI Agent",
+        "category": ["AI"],
+        "description": "An AI agent that automates the order taking process for a restaurant.",
+        "techstacks": ["Python", "LangChain", "LangGraph", "SQLite", "HuggingFace", "Google Gemini", "RAG", "Streamlit"]
+    },
+    "herobee": {
+        "name": "HeroBee",
+        "category": ["Game"],
+        "description": "An endless 2D shooting game.",
+        "techstacks": ["Unity", "C#"]
+    }
+}
