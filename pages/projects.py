@@ -69,17 +69,20 @@ if len(selected_categories) == 0:
 
 category_param = query_params.get("category", None)
 if category_param is not None:
-    for category in selected_categories:
-        selected_categories[category] = False
+    if category_param in selected_categories:
+        for category in selected_categories:
+            selected_categories[category] = False
 
-    selected_categories[category_param] = True
+        selected_categories[category_param] = True
 
-    st.session_state.selected_categories = selected_categories
-    st.switch_page("pages/projects.py")
+        st.session_state.selected_categories = selected_categories
+        st.switch_page("pages/projects.py")
+    else:
+        category_param = None
 
 filter_container = main_container.container(horizontal=True, horizontal_alignment="left")
 for category, selected in selected_categories.items():
-    check = filter_container.checkbox(label=category, value=selected, key=category)
+    check = filter_container.checkbox(label=category.title(), value=selected, key=category)
 
     if check:
         selected_categories[category] = True
