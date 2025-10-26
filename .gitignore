@@ -1,0 +1,100 @@
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+sdist/
+wheels/
+pip-wheel-metadata/
+
+# Virtual environment
+venv/
+.env/
+.env.bak/
+.venv/
+
+# -----------------------------
+# Streamlit
+# -----------------------------
+# Streamlit temporary files
+.streamlit/config.toml
+.streamlit/secrets.toml  # contains sensitive info
+.streamlit/credentials.toml
+.streamlit/cache/
+.streamlit/static/
+
+# Streamlit cloud generated files
+.streamlit/logs/
+.streamlit/history/
+
+# -----------------------------
+# VS Code / JetBrains / Editors
+# -----------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -----------------------------
+# OS-specific junk
+# -----------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------
+# Environment / Dependency managers
+# -----------------------------
+*.env
+.envrc
+*.bak
+*.tmp
+
+# -----------------------------
+# Logs / Outputs
+# -----------------------------
+*.log
+logs/
+*.out
+
+# -----------------------------
+# Data / Uploads / Cache
+# -----------------------------
+data/
+uploads/
+tmp/
+cache/
+__pycache__/
+
+# -----------------------------
+# Jupyter / Misc
+# -----------------------------
+.ipynb_checkpoints
+*.ipynb
+
+# -----------------------------
+# PyInstaller
+# -----------------------------
+# Files created by PyInstaller
+# (include if you ever freeze the app)
+*.manifest
+*.spec
