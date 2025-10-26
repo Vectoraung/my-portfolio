@@ -2,6 +2,8 @@ import streamlit as st
 import helpers as h
 import requests
 
+h.back_to_projects()
+
 all_projects = st.session_state.get("project_data", None)
 
 if all_projects is None:

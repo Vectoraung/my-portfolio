@@ -33,7 +33,46 @@ if project_id is not None:
     st.stop()
 
 main_container = st.container(gap="large")
+
+selected_categories = st.session_state.get("selected_categories", {})
+if len(selected_categories) == 0:
+    for id, data in project_data.items():
+        for category in data['category']:
+            if category not in selected_categories:
+                selected_categories[category] = True
+
+category_param = query_params.get("category", None)
+if category_param is not None:
+    for category in selected_categories:
+        selected_categories[category] = False
+
+    selected_categories[category_param] = True
+
+    st.session_state.selected_categories = selected_categories
+    st.switch_page("pages/projects.py")
+
+filter_container = main_container.container(horizontal=True, horizontal_alignment="left")
+for category, selected in selected_categories.items():
+    check = filter_container.checkbox(label=category, value=selected, key=category)
+
+    if check:
+        selected_categories[category] = True
+        st.session_state.selected_categories = selected_categories
+    else:
+        selected_categories[category] = False
+        st.session_state.selected_categories = selected_categories
+
+
 for id, data in project_data.items():
+    include = False
+    for category in data['category']:
+        if selected_categories[category]:
+            include = True
+            break
+
+    if not include:
+        continue
+
     container = main_container.container(border=True)
 
     container.header(data['name'])
